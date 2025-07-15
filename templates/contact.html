@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fix.Sphere</title>
+   <link rel="icon" type="img" href="android-chrome-192x192.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css\stylesheet.css" />
+  <link rel="stylesheet" href="css\media.css" />
+  <link rel="stylesheet" href="footer.js">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/fontawesome.min.js" integrity="sha512-j12pXc2gXZL/JZw5Mhi6LC7lkiXL0e2h+9ZWpqhniz0DkDrO01VNlBrG3LkPBn6DgG2b8CDjzJT+lxfocsS1Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ 
+</head>
+<style>
+.nav-item.dropdown .dropdown-menu {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  background-color: #727272;
+}
+
+/* Show dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+
+
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Optional: fix position */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+}
+.dropdown-item:hover,
+.dropdown-item:focus{
+  background-color: black;
+}
+
+</style>
+<body>
+
+
+
+  <!-- navbar -->
+<nav>
+  <div class="brand" tabindex="0" aria-label="Homepage">
+    
+    <img src="images\logo.jpg" alt="logo"><p class="h6">Fix.Sphere</p></a> 
+  </div>
+
+  <div class="nav-links">
+    <ul id="nav-menu" role="menu" aria-label="Primary navigation">
+      <li><a href="index.html" role="menuitem" tabindex="1">Home</a></li>
+      <li><a href="about.html" role="menuitem" tabindex="1">About</a></li>
+<li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">Services</a>
+      <ul class="dropdown-menu" >
+        <li><a class="dropdown-item" href="plumberlink.html" >Plumber</a></li>
+        <li><a class="dropdown-item" href="carpentlink.html">Carpenter</a></li>
+        <li><a class="dropdown-item" href="painterlink.html">Painter</a></li>
+        <li><a class="dropdown-item" href="tilerlink.html">Tier</a></li>
+        <li><a class="dropdown-item" href="welderlink.html">Welder</a></li>
+                <li><a class="dropdown-item" href="electrilink.html">Electrician</a></li>
+      </ul>
+</li>
+  
+      <li><a href="contact.html" role="menuitem" tabindex="1">Contact us</a></li>
+    </ul>
+
+     <a href="login.html"><i class="fa-solid fa-user" style="color: white;"></i></a>
+
+
+
+    <!-- <a href="loginpage\login.html" class="registration-btn" aria-label="Login" title="Login" tabindex="0" role="button">
+     <i class="fa-solid fa-right-to-bracket" style="color: white;"></i>
+    </a>  -->
+    <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" tabindex="0" role="button">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</nav>
+
+
+            <!-- Contact Us Section -->
+
+<section class="py-5 mt-5">
+      <div class="container">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <p class="text-center mb-5">We’re here to help! Please fill out the form below, and we’ll get back to you as soon as possible.</p>
+        
+        <!-- Contact Form -->
+        <form action="/submit-contact-form" method="POST">
+          <div class="mb-3">
+            <label for="name" class="form-label"> Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" class="form-control" id="subject" name="subject" required>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-success w-100" style="background-color:rgb(112, 100, 100) ;">Submit</button>
+        </form>
+      </div>
+    </section>
+    
+    <!-- Contact Information -->
+    <section class="py-5 bg-light" style="color: black;">
+      <div class="container">
+        <h3 class="text-center mb-4">Our Contact Information</h3>
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Email</h5>
+            <p><a href="mailto:info@yourcompany.com">info@yourcompany.com</a></p>
+          </div>
+          <div class="col-md-4">
+            <h5>Phone</h5>
+            <p><a href="tel:+123456789">+1 (234) 567-89</a></p>
+          </div>
+          <div class="col-md-4">
+            <h5>Social Media</h5>
+            <p>
+              <a href="https://facebook.com/yourcompany" target="_blank">Facebook</a> |
+              <a href="https://twitter.com/yourcompany" target="_blank">Twitter</a> |
+              <a href="https://instagram.com/yourcompany" target="_blank">Instagram</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <!-- <section class="py-5 bg-light">
+      <div class="container">
+        <h3 class="text-center mb-4">Frequently Asked Questions</h3>
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                 how does it work?
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Fixsphere website likely works by:
+
+1. Users visiting the site and accessing its features.
+2. Users submitting issues or requests.
+3. Fixsphere providing solutions, support, or resources.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Can I choose services?
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes, you can select the services  based on your preference.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    
+    <!-- Google Map -->
+    <section class="py-5">
+      <div class="container">
+        <h3 class="text-center mb-4">Our Location</h3>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=YOUR_GOOGLE_MAP_EMBED_URL" width="600" height="450" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+      <!-- <footer class="mt-5" style="background-color: var(--primary-color);">
+      <div class="text-white text-center p-3">
+            <a href="" class="text-decoration-none"><i class="fa-brands fa-facebook"></i>FACEBOOK</a>
+            <a href="" class="text-decoration-none"><i class="fa-brands fa-instagram"></i>INSTAGRAM</a>
+            <a href="" class="text-decoration-none"><i class="fa-brands fa-youtube"></i>YOUTUBE</a>
+            <a href="" class="text-decoration-none"><i class="fa-brands fa-pinterest-p"></i>PRINTEST</a>
+            <p style="color: black;">©fixsphere.com </p>
+            <a href="#" class="text-decoration-none">Affilliate Disclouser</a>
+            • 
+            <a href="#" class="text-decoration-none">privacry Policy</a>
+            • 
+            <a href="#" class="text-decoration-none">Terms of Use</a>
+            <br>
+            <br>
+        <p style="color: black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique quis, repellat fugit tempora ab aut! Nobis ullam distinctio magnam exercitationem laboriosam? Placeat eaque facilis quaerat rem laboriosam beatae odio tempora!</p>
+      </div>
+      <div></div>
+      <div></div>
+      <div></div>
+</footer>
+       -->
+
+
+<!-- footer -->
+
+<footer>
+  <div class="footer-container">
+    <section class="footer-about footer-section expanded">
+      <h3>About Us</h3>
+      <p>We are a passionate team committed to delivering the best web experiences. Follow us and stay connected for the latest updates and news.</p>
+    </section>
+
+    <section class="footer-links footer-section expanded">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html" tabindex="0">Home</a></li>
+        <li><a href="services.html" tabindex="0">Services</a></li>
+        <li><a href="login.html" tabindex="0">Login</a></li>
+        <li><a href="about.html" tabindex="0">About</a></li>
+        <li><a href="contact.html" tabindex="0">Contact</a></li>
+      </ul>
+    </section>
+
+    <section class="footer-contact footer-section expanded">
+      <h3>Contact</h3>
+      <p><i class="fa-solid fa-phone"></i>+1 (555) 123-4567</p>
+      <p><i class="fa-solid fa-envelope"></i>contact@company.com</p>
+      <p><i class="fa-solid fa-location-dot"></i>123 Main St, Anytown, USA</p>
+    </section>
+
+    <section class="footer-social footer-section expanded">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="https://facebook.com" class="facebook" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" class="twitter" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" class="instagram" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" class="linkedin" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </section>
+  </div>
+  <div class="footer-bottom" role="contentinfo">
+    &copy; 2024 Your Company Name. All rights reserved.
+  </div>
+</footer>
+ 
+ 
+
+<script>
+    
+    // contact
+              // search-box open close js code
+let navbar = document.querySelector(".navbar");
+let searchBox = document.querySelector(".search-box .bx-search");
+// let searchBoxCancel = document.querySelector(".search-box .bx-x");
+
+searchBox.addEventListener("click", ()=>{
+  navbar.classList.toggle("showInput");
+  if(navbar.classList.contains("showInput")){
+    searchBox.classList.replace("bx-search" ,"bx-x");
+  }else {
+    searchBox.classList.replace("bx-x" ,"bx-search");
+  }
+});
+
+// sidebar open close js code
+let navLinks = document.querySelector(".nav-links");
+let menuOpenBtn = document.querySelector(".navbar .bx-menu");
+let menuCloseBtn = document.querySelector(".nav-links .bx-x");
+menuOpenBtn.onclick = function() {
+navLinks.style.left = "0";
+}
+menuCloseBtn.onclick = function() {
+navLinks.style.left = "-100%";
+}
+
+
+// sidebar submenu open close js code
+let htmlcssArrow = document.querySelector(".htmlcss-arrow");
+htmlcssArrow.onclick = function() {
+ navLinks.classList.toggle("show1");
+}
+let moreArrow = document.querySelector(".more-arrow");
+moreArrow.onclick = function() {
+ navLinks.classList.toggle("show2");
+}
+let jsArrow = document.querySelector(".js-arrow");
+jsArrow.onclick = function() {
+ navLinks.classList.toggle("show3");
+}
+
+var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      freeMode: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+
+      },
+      loop : true,
+      autoplay : {
+       delay:2000
+      },
+      breakpoints: {
+        280: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 5,
+          spaceBetween: 20,
+        },
+      },
+    });
+
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+</body>
+</html>

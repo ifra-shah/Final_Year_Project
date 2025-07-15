@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Service Provider Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('/static/background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(112, 91, 91, 0.9);
+      width: 90%;
+      max-width: 550px;
+      min-height: 650px;
+    }
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1.8em;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: bold;
+      font-size: 1em;
+    }
+
+    input,
+    textarea,
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+.no-decrease::-webkit-inner-spin-button {
+  opacity: 1;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  background-image: linear-gradient(45deg, transparent 40%, black 40%, black 60%, transparent 60%),
+                    linear-gradient(-45deg, transparent 40%, black 40%, black 60%, transparent 60%);
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  background-position: top right;
+  transform: rotate(180deg); /* Flips the increment arrow to look like an up arrow only */
+  pointer-events: none; /* Prevents clicking the spinner */
+}
+
+    button {
+      background-color: gray;
+      color: #fff;
+      border: none;
+      margin-top: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 1em;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+      .form-container {
+        padding: 30px 20px;
+        min-height: 600px;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 25px 15px;
+        min-height: 580px;
+      }
+
+      input,
+      textarea,
+      button {
+        font-size: 0.95em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+ <h2>Service Provider Registration</h2>
+{% if error %}
+  <p style="color:red;">{{ error }}</p>
+{% endif %}
+
+
+  <form method="POST" enctype="multipart/form-data",action="{ %url 'service: form ' %}">
+ {% csrf_token %}
+<label for="skill">Select your skill:</label><br>
+<select id="skill" name="skill" required>
+  <option value="" disabled selected>Select your skill</option>
+  <option value="Plumber">Plumber</option>
+  <option value="Carpenter">Carpenter</option>
+  <option value="Tiler">Tiler</option>
+  <option value="Painter">Painter</option>
+  <option value="Welder">Welder</option>
+  <option value="Mechanic">Mechanic</option>
+</select>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="cnic">CNIC Number:</label>
+    <input type="text" id="cnic" name="cnic" required>
+
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" rows="3" required></textarea>
+
+    <label for="experience">Experience (in years):</label>
+    <input type="number" id="experience" name="experience" min="0"  class="no-decrease">
+
+    <label for="samples">Upload Work Samples:</label>
+    <input type="file" id="samples"  multiple="true",name="worksamples" >
+
+    <label for="location">Share Your Location:</label>
+    <input type="text" id="location" name="coordinates" placeholder="Click to share location" onclick="getLocation()" required>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<script>
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        const coords = position.coords.latitude + ", " + position.coords.longitude;
+        document.getElementById("location").value = coords;
+      }, function(error) {
+        alert("Unable to retrieve location.");
+      });
+ } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+</script>
+
+</body>
+</html>

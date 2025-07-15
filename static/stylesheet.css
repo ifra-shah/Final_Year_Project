@@ -1,0 +1,18 @@
+
+.container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+.form{
+    height:80% ;
+    width:30%;
+    background: white;
+    border: 2px solid black;
+    padding-bottom: 80%;
+    margin: 20px 20px;
+    display: flex;
+    justify-items: left;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fixsphere</title>
+  <link rel="stylesheet" href="\static\style.css" />
+ 
+</head>
+<body>
+
+  <div class="center-wrapper">
+    <div class="container" id="container">
+      <div class="form-container sign-up-container">
+        <form method="POST" action="{% url 'service:update_by_email_form'%}">
+          {% csrf_token %}
+          <label for="old email">Enter old email:</label>
+          <input type="email"name="oldemail"required><br><br>
+     <label for="new email">Enter new email:</label>
+          <input type="email"name="newemail"required><br><br>
+      <button type="submit">Delete</button>
+        </form>
+         <!-- <h1>Create Account</h1>
+          <span>Use your email for registration</span>
+
+<label for="Category"></label><br>
+<select id="role" name="role" required>
+  <option value="" disabled selected>Select your Category</option>
+  <option value="Customer">Customer</option>
+  <option value="serviceProvider">serviceProvider</option>
+<input type="text" name="name"placeholder="Enter your name"required>
+
+
+          <input type="email" placeholder="email" name="email"/>
+          <input type="password" placeholder="Password"  name="password"/>
+          
+          <button type="submit">sign up</button>
+        </form>
+      </div>-->
+
+      <!-- sign in yaha se shuru ho rha  -->
+     <!-- <div class="form-container sign-in-container">
+        <form action="#">
+          <h1>Welcome!</h1>
+          <span>To keep connected with us please login</span>
+
+<label for="Category">Select your Category:</label><br>
+<select id="Category" name="Category" required>
+  <option value="" disabled selected>Select your Category</option>
+  <option value="Customer">Customer</option>
+  <option value="serviceProvider">serviceProvider</option>
+  
+</select>
+<input type="text" name="name"placeholder="Enter your name"required>
+          <input type="email" placeholder="Email"  />
+          <input type="password" placeholder="Password" />
+
+          <button>Sign In</button>
+        </form>-->
+      
+
+
+
+       
+
+
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>To keep connected with us login with your info</p>
+            <button class="ghost" id="signIn">Sign In</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Hello, Friend!</h1>
+            <p>Enter your details and start your journey with us</p>
+            <button class="ghost" id="signUp">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="\static\script.js"></script>
+</body>
+</html>
