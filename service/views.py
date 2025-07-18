@@ -28,7 +28,7 @@ def form(request):
                     worksample=file,
                       
                 )
-            return redirect('/thankYou/')
+            return redirect('/verification')
         else:
             return render(request, "serviceprovider.html", {'form': form})
     else:
@@ -36,5 +36,36 @@ def form(request):
         return render(request, "serviceprovider.html", {'form': form})
 
 
-def thankYou(request):
-    return render(request, "thankYou.html")
+def verification(request):
+    return render(request, "verificationcode.html")
+
+def CustomerNoti(request):
+    return render (render,"customernotification.html")
+def portfolio(request):
+    return render (request,"portfolio.html")
+def contact(request):
+    return render (request,"contact.html")
+def logout(request):
+    return render (request,"logout.html")
+def UpdatedPassword(request):
+    return render(request,"updatedpasswordform.html")
+def ProviderDash(request):
+    return render(request,"serviceproviderdashboard.html")
+def ProviderNotification(request):
+    return render(request,"notification.html")
+def EditProfile(request):
+    return render(render,"editprofileform.html")
+def CustomerFeedback(request):
+    return render(render,"customerfeedback.html")
+def LoginForm(request):
+    return render(request,"login.html")
+def CustomerReviews(request):
+    return render(request,"customerreview.html")
+def BookingStatus(request):
+    return render(request,"servicebookingdetails.html")
+def AddService(request):
+    return render(request,"addnewservice.html")
+def LiveChat(request):
+    return render(request,"messages.html")
+def Favourite(request):
+    return render(request,"favourite.html")

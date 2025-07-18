@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Sidebar Logout Button -->
+<li><a href="" id="logoutBtn">Logout</a></li>
+
+<script>
+  // Add event listener to logout button
+  document.getElementById("logoutBtn").addEventListener("click", function (e) {
+    e.preventDefault(); // Prevent default link behavior
+
+    // Clear any login-related data (optional)
+    // localStorage.removeItem("userToken"); // if using localStorage
+    // sessionStorage.clear(); // if using sessionStorage
+
+    // Redirect to home page
+    window.location.href = "index.html";
+   
+    // Replace with your homepage path
+  });
+</script>
+
+</body>
+</html>

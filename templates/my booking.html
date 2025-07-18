@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FixSphere - My Bookings</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+
+
+
+
+  <style>
+    
+* {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+  }
+      nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #707279;
+    padding: 0 20px;
+    height: 80px;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  /* Left side - logo and brand name */
+   #toggleBtn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 1000;
+      padding: 5px 15px;
+      background-color:gray;
+      color: white;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+   .sidebar {
+      width: 250px;
+      background-color: #707279;
+      padding-top: 60px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: -250px;
+      color: white;
+      transition: let 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.show{
+      left:0;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: block;
+      transition: all 0.3 ease-in;
+    }
+
+    .sidebar a:hover {
+      background-color: #495057;
+    }
+
+  /* Right side - nav menu and login icon */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 90px;
+    margin: 0;
+    padding-left: 70px;
+  }
+
+  .nav-links ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: color 0.25s ease-in-out;
+  }
+
+  .nav-links ul li a:hover,
+  .nav-links ul li a:focus {
+    color: white;
+    outline: none;
+  }
+
+  /* Login icon styling */
+  .login-icon {
+    cursor: pointer;
+    color: #d1d5db;
+    /* font-size: 3rem; */
+    transition: color 0.25s ease-in-out;
+
+  } 
+
+   .login-icon:hover,
+  .login-icon:focus {
+    color: lightgray;
+    outline: none;
+  } 
+
+  /* Hamburger menu for smaller screens */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap:5px;
+  }
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #d1d5db;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+.nav-item.dropdown .dropdown-menu {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  background-color: #727272;
+}
+
+
+
+/* Show dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+
+
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Optional: fix position */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus{
+  background-color: black;
+}
+
+   /* body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }*/
+    .booking-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .status-badge {
+      font-size: 0.875rem;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+    .status-pending {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+    .status-inprogress {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .status-completed {
+      background-color: #e2e3e5;
+      color: #383d41;
+    }
+    .status-cancelled {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    .btn-feedback {
+      background-color: #e0e7ff;
+      color: #1e40af;
+      font-weight: 500;
+    }
+a {
+    color: #eee;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #ffd700;
+    outline: none;
+  }
+  footer {
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    color: #eee;
+    padding: 40px 20px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+  }
+  .footer-section {
+    flex: 1 1 220px;
+    min-width: 180px;
+  }
+  .footer-section h3 {
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 1.2px;
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 6px;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-section ul li {
+    margin: 10px 0;
+  }
+  .footer-section ul li a {
+    color: #eee;
+  }
+
+  .footer-about p {
+    line-height: 1.5;
+    max-width: 300px;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  .social-icons a {
+    background: #3b5998; /* Default Blue for Facebook */
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  .social-icons a:hover {
+    transform: scale(1.2);
+  }
+  .social-icons a.facebook {
+    background: #3b5998;
+  }
+  .social-icons a.twitter {
+    background: #1da1f2;
+  }
+  .social-icons a.instagram {
+    background: #e1306c;
+  }
+  .social-icons a.linkedin {
+    background: #0077b5;
+  }
+
+  .footer-contact p {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-contact p i {
+    color: #ffd700;
+    min-width: 20px;
+    font-size: 1.2rem;
+  }
+
+  /* Footer bottom */
+  .footer-bottom {
+    text-align: center;
+    padding: 15px 5px;
+    font-size: 0.8rem;
+    color: #ccc;
+    border-top: 1px solid #444;
+    margin-top: 30px;
+  }
+    /* Responsive styling */
+  @media (max-width: 768px) {
+    .nav-links ul {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      background: #717580;
+      height: calc(100% - 60px);
+      width: 180px;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      padding-top: 30px;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+      border-radius: 0 0 0 8px;
+      z-index: 999;
+    }
+    .nav-links ul.active {
+      transform: translateX(0);
+    }
+    .nav-links ul li {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .login-icon {
+      font-size: 1.7rem;
+    }
+    .hamburger {
+      display: flex;
+    }
+  }
+
+
+
+@media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+    }
+    .footer-section h3 {
+      position: relative;
+    }
+    .footer-section h3::after {
+      content: '\f078'; /* FontAwesome chevron down */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 0;
+      top: 2px;
+      font-size: 1rem;
+      transition: transform 0.4s ease;
+      user-select: none;
+    }
+    .footer-section.collapsed h3::after {
+      transform: rotate(-180deg);
+    }
+    .footer-section ul,
+    .footer-section p:not(.footer-about p) {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .footer-section.expanded ul,
+    .footer-section.expanded p:not(.footer-about p) {
+      max-height: 1000px; /* large max-height for animation */
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .footer-about p {
+      max-width: 100%;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+<nav>
+  <div class="brand" tabindex="0" aria-label="Homepage">
+<button id="toggleBtn">☰ </button>
+<div class="sidebar" id="sidebar">
+  
+    <a href="index.html"><i class="fas fa-home me-2"></i> Dashboard</a>
+    <a href="profile.html"><i class="fas fa-user me-2"></i> Profile</a>
+<a href="my booking.html"><i class="fas fa-book "></i> My bookings</a>
+
+
+    <a href="notification.html"><i class="fas fa-bell me-2"></i> Notifications</a>
+    <a href="favourote.html"><i class="fas fa-heart me-2"></i> Favorites</a>
+    <a href="feeback.html"><i class="fas fa-comment-dots me-2"></i> Feedback</a>
+    <a href="#"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
+  </div>
+  </div>
+  <div class="nav-links">
+    <ul id="nav-menu" role="menu" aria-label="Primary navigation">
+      <li><a href="index.html" role="menuitem" tabindex="1">Home</a></li>
+      <li><a href="about.html" role="menuitem" tabindex="1">About</a></li>
+<li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">Services</a>
+      <ul class="dropdown-menu"  style="display: grid;gap: 0%;padding-left: 0%;" >
+        <li><a class="dropdown-item"  href="plumberlink.html" >Plumber</a></li>
+        <li><a class="dropdown-item" href="carpentlink.html">Carpenter</a></li>
+        <li><a class="dropdown-item" href="painterlink.html">Painter</a></li>
+        <li><a class="dropdown-item" href="tilerlink.html">Tier</a></li>
+        <li><a class="dropdown-item" href="welderlink.html">Welder</a></li>
+                <li><a class="dropdown-item" href="electrilink.html">Electrician</a></li>
+      </ul>
+</li>
+  
+      <li><a href="contact.html" role="menuitem" tabindex="1">Contact us</a></li>
+ <!--<a href="loginpage\login.html" class="registration-btn" aria-label="Login" title="Login" tabindex="0" role="button">-->
+    </ul>
+         <a href="login.html"><i class="fa-solid fa-user" style="color: white;"></i></a>
+
+
+    
+    <!-- <a href="loginpage\login.html" class="registration-btn" aria-label="Login" title="Login" tabindex="0" role="button">
+     <i class="fa-solid fa-right-to-bracket" style="color: white;"></i>
+    </a>  -->
+    <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" tabindex="0" role="button">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Page Content -->
+  <div class="container mt-5">
+    <h2 class="mb-4">My Bookings</h2>
+
+    <!-- Booking 1 -->
+    <div class="booking-card d-flex justify-content-between align-items-center">
+      <div>
+        <h5 class="mb-1">Electrician Service</h5>
+        <p class="mb-0 text-muted">24 Apr 2025 at 10:00 AM</p>
+      </div>
+      <span class="status-badge status-pending">Pending</span>
+    </div>
+
+    <!-- Booking 2 -->
+    <div class="booking-card d-flex justify-content-between align-items-center">
+      <div>
+        <h5 class="mb-1">Cleaner Service</h5>
+        <p class="mb-0 text-muted">11 May 2025 at 03:00 PM</p>
+      </div>
+      <span class="status-badge status-inprogress">In Progress</span>
+    </div>
+
+    <!-- Booking 3 -->
+    <div class="booking-card d-flex justify-content-between align-items-center">
+      <div>
+        <h5 class="mb-1">Electrician Service</h5>
+        <p class="mb-0 text-muted">16 Jun 2025 at 09:00 AM</p>
+      </div>
+      <button class="btn btn-feedback">Give Feedback</button>
+    </div>
+
+    <!-- Booking 4 -->
+    <div class="booking-card d-flex justify-content-between align-items-center">
+      <div>
+        <h5 class="mb-1">Plumber Service</h5>
+        <p class="mb-0 text-muted">05 Jul 2025 at 11:00 AM</p>
+      </div>
+      <span class="status-badge status-cancelled">Cancelled</span>
+    </div>
+  </div>
+<footer>
+  <div class="footer-container">
+    <section class="footer-about footer-section expanded">
+      <h3>About Us</h3>
+      <p>We are a passionate team committed to delivering the best web experiences. Follow us and stay connected for the latest updates and news.</p>
+    </section>
+
+    <section class="footer-links footer-section expanded">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#home" tabindex="0">Home</a></li>
+        <li><a href="#services" tabindex="0">Services</a></li>
+        <li><a href="#portfolio" tabindex="0">Portfolio</a></li>
+        <li><a href="#blog" tabindex="0">Blog</a></li>
+        <li><a href="#contact" tabindex="0">Contact</a></li>
+      </ul>
+    </section>
+
+    <section class="footer-contact footer-section expanded">
+      <h3>Contact</h3>
+      <p><i class="fa-solid fa-phone"></i>+1 (555) 123-4567</p>
+      <p><i class="fa-solid fa-envelope"></i>contact@company.com</p>
+      <p><i class="fa-solid fa-location-dot"></i>123 Main St, Anytown, USA</p>
+    </section>
+
+    <section class="footer-social footer-section expanded">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="https://facebook.com" class="facebook" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" class="twitter" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" class="instagram" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" class="linkedin" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </section>
+  </div>
+  <div class="footer-bottom" role="contentinfo">
+    &copy; 2024 Your Company Name. All rights reserved.
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  const toggleBtn = document.getElementById("toggleBtn");
+  const sidebar = document.getElementById("sidebar");
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("nav-menu");
+
+  // Toggle sidebar visibility with class
+  toggleBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("show");
+  });
+
+  // Toggle hamburger menu on small screens
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+
+  // Optional: Click outside to close sidebar (for better UX)
+  window.addEventListener("click", (e) => {
+    if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+      sidebar.classList.remove("show");
+    }
+  });
+  // Dropdown toggle on small screens
+  document.querySelectorAll('.nav-item.dropdown > a').forEach((dropdownToggle) => {
+    dropdownToggle.addEventListener('click', function (e) {
+      e.preventDefault(); // Prevent default link behavior
+      const dropdownMenu = this.nextElementSibling;
+
+      // Close other dropdowns if needed
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        if (menu !== dropdownMenu) {
+          menu.style.display = 'none';
+        }
+      });
+
+      // Toggle current dropdown
+      dropdownMenu.style.display =
+        dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+
+  // Optional: Close dropdowns when clicking outside
+  window.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-item.dropdown')) {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.style.display = 'none';
+      });
+    }
+  });
+  // Toggle footer sections on small screens
+  document.querySelectorAll('.footer-section h3').forEach(sectionTitle => {
+    sectionTitle.addEventListener('click', () => {
+      const section = sectionTitle.parentElement;
+      if(window.innerWidth <= 768){
+        const isExpanded = section.classList.contains('expanded');
+        if(isExpanded) {
+          section.classList.remove('expanded');
+          section.classList.add('collapsed');
+        } else {
+          // Collapse others
+          document.querySelectorAll('.footer-section').forEach(s => {
+            s.classList.remove('expanded');
+            s.classList.add('collapsed');
+          });
+          section.classList.remove('collapsed');
+          section.classList.add('expanded');
+        }
+      }
+    });
+  });
+
+  // Initialize all sections expanded on larger screen, collapsed otherwise
+  function adjustFooterOnResize() {
+    if(window.innerWidth > 768){
+      document.querySelectorAll('.footer-section').forEach(s => {
+        s.classList.remove('collapsed');
+        s.classList.add('expanded');
+      });
+    } else {
+      document.querySelectorAll('.footer-section').forEach(s => {
+        s.classList.remove('expanded');
+        s.classList.add('collapsed');
+      });
+    }
+  }
+  window.addEventListener('resize', adjustFooterOnResize);
+  window.addEventListener('load', adjustFooterOnResize);
+
+
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

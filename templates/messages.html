@@ -1,0 +1,540 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>service provider</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+   nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #707279;
+    padding: 0 20px;
+    height: 80px;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  /* Left side - logo and brand name */
+   #toggleBtn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 1000;
+      padding: 5px 15px;
+      background-color:gray;
+      color: white;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+   .sidebar {
+      width: 250px;
+      background-color: #707279;
+      padding-top: 60px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: -250px;
+      color: white;
+      transition: let 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.show{
+      left:0;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: block;
+      transition: all 0.3 ease-in;
+    }
+
+    .sidebar a:hover {
+      background-color: #495057;
+    }
+
+  /* Right side - nav menu and login icon */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 90px;
+    margin: 0;
+    padding-left: 70px;
+  }
+
+  .nav-links ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: color 0.25s ease-in-out;
+  }
+
+  .nav-links ul li a:hover,
+  .nav-links ul li a:focus {
+    color: white;
+    outline: none;
+  }
+
+  /* Login icon styling */
+  .login-icon {
+    cursor: pointer;
+    color: #d1d5db;
+    /* font-size: 3rem; */
+    transition: color 0.25s ease-in-out;
+
+  } 
+
+   .login-icon:hover,
+  .login-icon:focus {
+    color: lightgray;
+    outline: none;
+  } 
+
+  /* Hamburger menu for smaller screens */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap:5px;
+  }
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #d1d5db;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+.nav-item.dropdown .dropdown-menu {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  background-color: #727272;
+}
+
+
+
+/* Show dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+
+
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Optional: fix position */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus{
+  background-color: black;
+}
+
+    .content {
+
+      
+      background: #f5f6fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .profile-container {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .profile-container img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid #4CAF50;
+    }
+
+    .profile-container h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .profile-container p {
+      color: #777;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px 5px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    .welcome {
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #444;
+    }
+
+ #uploadSection {
+      display: none;
+      margin-top: 10px;
+    }
+#uploadSection label{
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+   #uploadSection input[type="file"] {
+      border: 1px solidc #ccc;
+      padding: 8px;
+      border-radius: 6px;
+      width: 100%;
+      max-width: 250
+
+
+    }
+
+
+/* Responsive styling */
+  @media (max-width: 768px) {
+    .nav-links ul {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      background: #717580;
+      height: calc(100% - 60px);
+      width: 180px;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      padding-top: 30px;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+      border-radius: 0 0 0 8px;
+      z-index: 999;
+    }
+    .nav-links ul.active {
+      transform: translateX(0);
+    }
+    .nav-links ul li {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .login-icon {
+      font-size: 1.7rem;
+    }
+    .hamburger {
+      display: flex;
+    }
+  }
+ @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+
+      }
+    }
+
+
+
+
+    @media (max-width: 500px) {
+      .profile-container {
+        padding: 20px;
+      }
+
+      .btn {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+    @media (max-width: 500px) {
+      .btn {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+
+
+      .notification-card {
+      border-left: 5px solid #0d6efd;
+      padding: 15px;
+      margin-bottom: 15px;
+      background-color: #f8f9fa;
+    }
+    .notification-time {
+      font-size: 0.85rem;
+      color: gray;
+    }
+
+
+
+
+    .chat-container {
+      display: flex;
+      height: 80vh;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .chat-sidebar {
+      width: 30%;
+      border-right: 1px solid #ccc;
+      background: #f8f9fa;
+      overflow-y: auto;
+    }
+    .chat-window {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+    }
+    .messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .message {
+      margin-bottom: 15px;
+      max-width: 70%;
+      padding: 10px 15px;
+      border-radius: 15px;
+    }
+    .sent {
+      background-color: #d1e7dd;
+      align-self: flex-end;
+    }
+    .received {
+      background-color: #f0f0f0;
+      align-self: flex-start;
+    }
+    .chat-input {
+      border-top: 1px solid #ccc;
+      padding: 10px;
+      background: #fff;
+    }
+
+  </style>
+</head>
+<body> 
+  <nav>
+  <div class="brand" tabindex="0" aria-label="Homepage">
+<button id="toggleBtn">☰ </button>
+<div class="sidebar" id="sidebar">
+  
+    <a href="dashboard.html"><i class="fas fa-home me-2"></i> Dashboard</a>
+    <!-- <a href="profile.html"><i class="fas fa-user me-2"></i> Service management</a>
+<a href="my booking.html"><i class="fas fa-book "></i> Reviews & Ratings</a> -->
+
+
+    <a href="manage service.html" class="nav-item flex items-center px-4 py-3 hover:bg-gray-100 rounded-r-full" data-section="services">
+                            <i class="fas fa-cogs w-6 text-center"></i>
+                            <span class="nav-text ml-3">Service Management</span>
+    </a>
+    <a href="customer reviews.html" class="nav-item flex items-center px-4 py-3 hover:bg-gray-100 rounded-r-full" data-section="reviews">
+                            <i class="fas fa-star w-6 text-center"></i>
+                            <span class="nav-text ml-3">Reviews & Ratings</span>
+     </a>
+      <a href="notification.html" class="nav-item flex items-center px-4 py-3 hover:bg-gray-100 rounded-r-full relative" data-section="notifications">
+                            <i class="fas fa-bell w-6 text-center"></i>
+                            <span class="nav-text ml-3">Notifications</span>
+                            <div class="notification-dot"></div>
+     </a>
+     <a href="messages.html" class="nav-item flex items-center px-4 py-3 hover:bg-gray-100 rounded-r-full" data-section="chat">
+                            <i class="fas fa-comments w-6 text-center"></i>
+                            <span class="nav-text ml-3">Chat/Messaging</span>
+    </a>
+    <a href="portfolio.html" class="nav-item flex items-center px-4 py-3 hover:bg-gray-100 rounded-r-full" data-section="portfolio">
+                            <i class="fas fa-briefcase w-6 text-center"></i>
+                            <span class="nav-text ml-3">Portfolio</span>
+    </a>
+    <a href="profile.html" class="nav-item flex items-center px-4 py-3 hover:bg-gray-100 rounded-r-full" data-section="profile">
+                            <i class="fas fa-user w-6 text-center"></i>
+                            <span class="nav-text ml-3">Profile</span>
+    </a>
+    <a href="service request.html" class="nav-item flex items-center px-4 py-3 hover:bg-gray-100 rounded-r-full" data-section="bookings">
+                            <i class="fas fa-calendar-check w-6 text-center"></i>
+                            <span class="nav-text ml-3">Requests/Bookings</span>
+    </a>
+    <!-- <a href="favourote.html"><i class="fas fa-heart me-2"></i> Chat/Messaging</a>
+    <a href="feeback.html"><i class="fas fa-comment-dots me-2"></i>Portfolio</a>
+    <a href="#"><i class="fas fa-sign-out-alt me-2"></i> Profile</a> -->
+  </div>
+  </div>
+  <div class="nav-links">
+    <ul id="nav-menu" role="menu" aria-label="Primary navigation">
+      <li><a href="index.html" role="menuitem" tabindex="1">Home</a></li>
+      <li><a href="about.html" role="menuitem" tabindex="1">About</a></li>
+<li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">Services</a>
+      <ul class="dropdown-menu"  style="display: grid;gap: 0%;padding-left: 0%;" >
+        <li><a class="dropdown-item"  href="#" >Plumber</a></li>
+        <li><a class="dropdown-item" href="#">Carpenter</a></li>
+        <li><a class="dropdown-item" href="#">Painter</a></li>
+        <li><a class="dropdown-item" href="#">Tier</a></li>
+        <li><a class="dropdown-item" href="#">Welder</a></li>
+                <li><a class="dropdown-item" href="#">Mechanic</a></li>
+      </ul>
+</li>
+  
+      <li><a href="contact.html" role="menuitem" tabindex="1">Contact us</a></li>
+ <!--<a href="loginpage\login.html" class="registration-btn" aria-label="Login" title="Login" tabindex="0" role="button">-->
+    </ul>
+    <a href="loginpage\login.html" class="registration-btn" aria-label="Login" title="Login" tabindex="0" role="button">
+    </a> 
+     <i class="fa-solid fa-user" style="color: white;"></i>
+
+
+    
+    <!-- <a href="loginpage\login.html" class="registration-btn" aria-label="Login" title="Login" tabindex="0" role="button">
+     <i class="fa-solid fa-right-to-bracket" style="color: white;"></i>
+    </a>  -->
+    <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" tabindex="0" role="button">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+  <div class="container py-4">
+    <h2 class="mb-4">Messages</h2>
+
+    <div class="chat-container">
+      <!-- Sidebar: List of Customers -->
+      <div class="chat-sidebar p-3">
+        <h5>Conversations</h5>
+        <ul class="list-group">
+          <li class="list-group-item active">John Ali</li>
+          <li class="list-group-item">Sarah Khan</li>
+          <li class="list-group-item">Usman Mehmood</li>
+        </ul>
+      </div>
+
+      <!-- Chat Window -->
+      <div class="chat-window">
+        <div class="messages d-flex flex-column">
+          <div class="message received">Hello! I need AC repair service today.</div>
+          <div class="message sent">Sure, I’m available after 4 PM. Does that work?</div>
+          <div class="message received">Yes, that’s perfect. Thank you!</div>
+        </div>
+        <div class="chat-input">
+          <form class="d-flex">
+            <input type="text" class="form-control me-2" placeholder="Type your message...">
+            <button class="btn btn-primary">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <script>
+  const toggleBtn = document.getElementById("toggleBtn");
+  const sidebar = document.getElementById("sidebar");
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("nav-menu");
+
+  // Toggle sidebar visibility with class
+  toggleBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("show");
+  });
+
+  // Toggle hamburger menu on small screens
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+
+  // Optional: Click outside to close sidebar (for better UX)
+  window.addEventListener("click", (e) => {
+    if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+      sidebar.classList.remove("show");
+    }
+  });
+  // Dropdown toggle on small screens
+  document.querySelectorAll('.nav-item.dropdown > a').forEach((dropdownToggle) => {
+    dropdownToggle.addEventListener('click', function (e) {
+      e.preventDefault(); // Prevent default link behavior
+      const dropdownMenu = this.nextElementSibling;
+
+      // Close other dropdowns if needed
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        if (menu !== dropdownMenu) {
+          menu.style.display = 'none';
+        }
+      });
+
+      // Toggle current dropdown
+      dropdownMenu.style.display =
+        dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+
+  // Optional: Close dropdowns when clicking outside
+  window.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-item.dropdown')) {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.style.display = 'none';
+      });
+    }
+  });
+</script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ 
+</body>
+</html>

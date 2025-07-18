@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fix.Sphere - Saim Sapal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f4f8;
+      color: #333;
+    }
+
+    nav {
+      background-color: #0f3c61;
+      color: white;
+      padding: 1rem 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .hero {
+      padding: 60px 10%;
+      background-color: #0f3c61;
+      color: white;
+      text-align: left;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-text .stars {
+      color: gold;
+      margin: 10px 0;
+    }
+
+    .hero-text p {
+      margin: 1rem 0;
+      max-width: 500px;
+    }
+
+    .hero-text button,
+    .hero-text .phone {
+      background-color: #f9fafb;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 300px;
+      border-radius: 50%;
+      border: 5px solid white;
+    }
+
+    .section {
+      padding: 60px 10%;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #0f3c61;
+    }
+
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about img {
+      max-width: 300px;
+      border-radius: 8px;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .about-text .details {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .location-btn {
+      background-color: #0f3c61;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .work-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .work-gallery img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero {
+        flex-direction: column;
+      }
+
+      .about {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">Fix Sphere</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Hello, It's me<br><strong>Saim Sapal</strong></h1>
+      <p class="stars">★★★★★</p>
+      <p>Powering homes, businesses, and communities with expertise and care. Illuminating solutions for a brighter tomorrow.</p>
+      <button onclick="alert('Connecting to live chat...')">Live Chat</button>
+      <p class="phone">📞 123-456-7890</p>
+      <button type="book">Book now</button>
+    </div>
+    <div class="hero-image">
+      <img src="images/saim.jpg" alt="Saim Sapal">
+    </div>
+  </section>
+
+  <!-- ABOUT ME -->
+  <section class="section">
+    <h2>About Me</h2>
+    <div class="about">
+      <img src="images/saim.jpg" alt="Electrician">
+      <div class="about-text">
+        <p>As a licensed and experienced electrician, I bring expertise, reliability, and safety to every electrical project I undertake. With a strong foundation in electrical systems, wiring, and circuitry, I'm equipped to handle a wide range of tasks, from routine maintenance to complex installations and upgrades.</p>
+        <p class="details">📞 123-456-7890 <br> CNIC: 35202-34689-0</p>
+        <button class="location-btn" onclick="window.location.href='https://maps.google.com'">Location</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK GALLERY -->
+  <section class="section">
+    <h2>My Previous Work</h2>
+    <div class="work-gallery">
+      <img src="images/work1.jpg" alt="Work 1">
+      <img src="images/work2.jpg" alt="Work 2">
+      <img src="images/work3.jpg" alt="Work 3">
+    </div>
+  </section>
+
+</body>
+</html>
+
+
