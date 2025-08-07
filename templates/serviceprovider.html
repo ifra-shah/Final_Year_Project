@@ -121,6 +121,9 @@ select {
 </head>
 <body>
 
+
+
+
 <div class="form-container">
  <h2>Service Provider Registration</h2>
 {% if error %}
@@ -128,10 +131,20 @@ select {
 {% endif %}
 
 
-  <form method="POST" enctype="multipart/form-data",action="{ %url 'service: form ' %}">
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="bg-{{ message.tags }}">
+        {{ message }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+  <form method="POST"  enctype="multipart/form-data",action="{% url 'service:form' %}">
  {% csrf_token %}
-<label for="skill">Select your skill:</label><br>
-<select id="skill" name="skill" required>
+<!-- <label for="skill">Select your skill:</label><br> -->
+<!-- <select id="skill" name="skill" required>
   <option value="" disabled selected>Select your skill</option>
   <option value="Plumber">Plumber</option>
   <option value="Carpenter">Carpenter</option>
@@ -139,7 +152,7 @@ select {
   <option value="Painter">Painter</option>
   <option value="Welder">Welder</option>
   <option value="Mechanic">Mechanic</option>
-</select>
+</select> -->
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
 
@@ -153,7 +166,7 @@ select {
     <input type="number" id="experience" name="experience" min="0"  class="no-decrease">
 
     <label for="samples">Upload Work Samples:</label>
-    <input type="file" id="samples"  multiple="true",name="worksamples" >
+    <input type="file" id="samples" name="worksample" >
 
     <label for="location">Share Your Location:</label>
     <input type="text" id="location" name="coordinates" placeholder="Click to share location" onclick="getLocation()" required>

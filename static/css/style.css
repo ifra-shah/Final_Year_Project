@@ -3,8 +3,258 @@ html, body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
 }
-  
+  body {
+      background-color: #f4f4f6;
+      font-family: Arial, sans-serif;
 
+
+    }
+    nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #707279;
+    padding: 0 20px;
+    height: 80px;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  /* Left side - logo and brand name */
+   #toggleBtn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 1000;
+      padding: 5px 15px;
+      background-color:gray;
+      color: white;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+   .sidebar {
+      width: 250px;
+      background-color: #707279;
+      padding-top: 60px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: -250px;
+      color: white;
+      transition: let 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.show{
+      left:0;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: block;
+      transition: all 0.3 ease-in;
+    }
+
+    .sidebar a:hover {
+      background-color: #495057;
+    }
+
+  /* Right side - nav menu and login icon */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 90px;
+    margin: 0;
+    padding-left: 70px;
+  }
+
+  .nav-links ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: color 0.25s ease-in-out;
+  }
+
+  .nav-links ul li a:hover,
+  .nav-links ul li a:focus {
+    color: white;
+    outline: none;
+  }
+
+  /* Login icon styling */
+  .login-icon {
+    cursor: pointer;
+    color: #d1d5db;
+    /* font-size: 3rem; */
+    transition: color 0.25s ease-in-out;
+
+  } 
+
+   .login-icon:hover,
+  .login-icon:focus {
+    color: lightgray;
+    outline: none;
+  } 
+
+  /* Hamburger menu for smaller screens */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap:5px;
+  }
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #d1d5db;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+.nav-item.dropdown .dropdown-menu {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  background-color: #727272;
+}
+
+
+
+/* Show dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+
+
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Optional: fix position */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus{
+  background-color: black;
+}
+
+footer {
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    color: #eee;
+    padding: 40px 20px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+  }
+  .footer-section {
+    flex: 1 1 220px;
+    min-width: 180px;
+  }
+  .footer-section h3 {
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 1.2px;
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 6px;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-section ul li {
+    margin: 10px 0;
+  }
+  .footer-section ul li a {
+    color: #eee;
+  }
+
+  .footer-about p {
+    line-height: 1.5;
+    max-width: 300px;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  .social-icons a {
+    background: #3b5998; /* Default Blue for Facebook */
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  .social-icons a:hover {
+    transform: scale(1.2);
+  }
+  .social-icons a.facebook {
+    background: #3b5998;
+  }
+  .social-icons a.twitter {
+    background: #1da1f2;
+  }
+  .social-icons a.instagram {
+    background: #e1306c;
+  }
+  .social-icons a.linkedin {
+    background: #0077b5;
+  }
+
+  .footer-contact p {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-contact p i {
+    color: #ffd700;
+    min-width: 20px;
+    font-size: 1.2rem;
+  }
+
+  /* Footer bottom */
+  .footer-bottom {
+    text-align: center;
+    padding: 15px 5px;
+    font-size: 0.8rem;
+    color: #ccc;
+    border-top: 1px solid #444;
+    margin-top: 30px;
+  }
 
 .center-wrapper {
   height: 100vh;
@@ -26,7 +276,7 @@ html, body {
   max-width: 900px;
   min-height: 500px;
   transition: all 0.6s ease-in-out;
-  display: flex;
+  /* display: flex; */
 }
 
 .form-container {
@@ -181,7 +431,7 @@ button:hover {
   color: #fff;
 }
 
-@media (max-width: 850px) {
+/* @media (max-width: 850px) {
   .container {
     display: flex;
     flex-direction: column;
@@ -191,10 +441,10 @@ button:hover {
     position: static;
     background-color: red;
   }
-}
+} */
 
 /* ---------------- Media Queries ------------------ */
-@media (max-width: 850px) {
+/* @media (max-width: 850px) {
   .container {
     flex-direction: column;
     width: 100%;
@@ -236,3 +486,81 @@ button:hover {
     font-size: 10px;
   }
 }
+
+/* Responsive styling */
+  @media (max-width: 768px) {
+    .nav-links ul {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      background: #717580;
+      height: calc(100% - 60px);
+      width: 180px;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      padding-top: 30px;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+      border-radius: 0 0 0 8px;
+      z-index: 999;
+    }
+    .nav-links ul.active {
+      transform: translateX(0);
+    }
+    .nav-links ul li {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .login-icon {
+      font-size: 1.7rem;
+    }
+    .hamburger {
+      display: flex;
+    }
+  }
+ @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+
+      }
+    }
+
+@media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+    }
+    .footer-section h3 {
+      position: relative;
+    }
+    .footer-section h3::after {
+      content: '\f078'; /* FontAwesome chevron down */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 0;
+      top: 2px;
+      font-size: 1rem;
+      transition: transform 0.4s ease;
+      user-select: none;
+    }
+    .footer-section.collapsed h3::after {
+      transform: rotate(-180deg);
+    }
+    .footer-section ul,
+    .footer-section p:not(.footer-about p) {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .footer-section.expanded ul,
+    .footer-section.expanded p:not(.footer-about p) {
+      max-height: 1000px; /* large max-height for animation */
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .footer-about p {
+      max-width: 100%;
+    }
+  } */

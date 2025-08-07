@@ -1,8 +1,9 @@
 from django.db import models
 from django.core.validators import RegexValidator
+from security.models import *
 
-class ServiceProvider(models.Model):
-    skill=models.CharField(max_length=30)
+class Provider(models.Model):
+    user = models.ForeignKey(MyUser, null=True, blank=True, on_delete=models.CASCADE)
     name =models.CharField(max_length=50)
     cnic=models.CharField(max_length=14,
 
@@ -19,16 +20,33 @@ class ServiceProvider(models.Model):
     worksample=models.ImageField(upload_to='worksamples/')
     uploaded_at=models.DateTimeField(auto_now_add=True)
     coordinates=models.CharField(max_length=50)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    
     def __str__(self):
         return self.name
+     
+     
+
+class category(models.Model):
+    name = models.CharField(max_length=50, null=True, blank=True, unique=True)
+
+    def __str__(self):
+        return self.name   
         
+class ProviderService(models.Model):
+    provider = models.ForeignKey(Provider, on_delete=models.CASCADE)
+    service = models.ForeignKey(category, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50,null=True, blank=True, unique=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    description = models.TextField(null=True, blank=True,)
+
+
+    class Meta:
+        unique_together = ('provider', 'service')  # Prevent duplicate entries
+
+    def __str__(self):
+        return f"{self.provider.name} - {self.service.name} (PKR {self.price})"
+
 
 # Create your models here.
-class login_form(models.Model):
-    role=models.CharField(max_length=50)
-    name=models.CharField(max_length=50)
-    email=models.EmailField()
-    password=models.CharField(max_length=100)
-    def __str__(self):
-        return self.name
-        

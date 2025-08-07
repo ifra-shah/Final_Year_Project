@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FixMate - Home Services</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+  .navbar-custom {
+    background-color: #007bff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-link,
+    .navbar-brand,
+    .bi-person {
+      color: white !important;
+      position: relative;
+      font-weight: 500;
+    }
+
+    /* Animated underline */
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -3px;
+      background-color: white;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .logo-img {
+      width: 35px;
+      height: 35px;
+      margin-right: 8px;
+    }
+
+header {  
+  position: relative;  
+  height: 100vh;  
+  overflow: hidden;  
+}  
+
+header video {  
+  position: absolute;  
+  top: 0;  
+  left: 0;  
+  width: 100%;  
+  height: 100%;  
+  object-fit: cover;  
+  z-index: -1;  
+}  
+.hero-text {  
+  height: 100vh;  
+  display: flex;  
+  flex-direction: column;  
+  align-items: center;  
+  justify-content: center;  
+  background: rgba(0, 0, 0, 0.5);  
+  color: white;  
+  text-align: center;  
+  padding: 0 1rem;  
+}  
+
+.hero-text h1 {  
+  font-size: 3rem;  
+  margin-bottom: 1rem;  
+  animation: fadeIn 1s ease-in-out;  
+}  
+
+.hero-text p {  
+  font-size: 1.2rem;  
+  margin-bottom: 2rem;  
+  animation: fadeIn 2s ease-in-out;  
+}  
+
+.btn {  
+  padding: 12px 24px;  
+  margin: 5px;  
+  border: none;  
+  border-radius: 8px;  
+  background-color: #007bff;  
+  color: white;  
+  cursor: pointer;  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;  
+}  
+
+.btn:hover {  
+  transform: scale(1.05);  
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);  
+}  
+
+
+
+
+
+
+   /* header {
+      background-color: #007bff;
+      padding: 1rem;
+      text-align: center;
+      color: white;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 80vh;
+      overflow: hidden;
+    }*/
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .overlay h1 {
+      font-size: 3rem;
+    }
+
+    .why-choose-us {
+      padding: 4rem 2rem;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .why-choose-us h2 {
+      color: #007bff;
+      margin-bottom: 2rem;
+    }
+
+    .why-choose-us .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .feature {
+      flex: 1 1 200px;
+      padding: 1rem;
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .feature h3 {
+      color: #007bff;
+      margin-bottom: 0.5rem;
+    }
+
+    .services {
+      padding: 4rem 2rem;
+      background-color: #f8f9fa;
+      text-align: center;
+    }
+
+    .services h2 {
+      color: #007bff;
+      margin-bottom: 2rem;
+    }
+
+    .services-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      width: 180px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .service-card img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .how-it-works {
+      padding: 4rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .how-it-works .text {
+      flex: 1 1 300px;
+    }
+
+    .how-it-works .video-placeholder {
+      flex: 1 1 300px;
+      background-color: #e0e0e0;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: #777;
+      border-radius: 10px;
+    }
+
+    .testimonials {
+      padding: 4rem 2rem;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      color: #007bff;
+      margin-bottom: 2rem;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .feedback-card {
+      background: #f1f1f1;
+      border-radius: 10px;
+      padding: 1.5rem;
+      max-width: 250px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .feedback-card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background-color: #007bff;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 2rem;
+      text-align: left;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-col ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .social-icons a {
+      margin-right: 10px;
+    }
+
+    .social-icons img {
+      width: 24px;
+      height: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .how-it-works {
+        flex-direction: column;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      
+      <!-- Left: Logo + Name -->
+      <a class="navbar-brand d-flex align-items-center fw-bold" href="#">
+        <img src="your_logo_path_here.png" alt="FixSphere Logo" class="logo-img">
+        FixSphere
+      </a>
+
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Center links -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav gap-3">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About us</a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact us</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right: Login Icon -->
+      <div class="d-flex">
+        <a href="#" class="nav-link">
+          <i class="bi bi-person fs-4"></i>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  
+    <header>  
+    <video autoplay muted loop>  
+      <source src="video.mp4" type="video/mp4">  
+      Your browser does not support the video tag.  
+    </video>  
+    <div class="hero-text">  
+      <h1>Expert Help for Every Corner of Your Home</h1>  
+      <p>Reliable • On-Time • Affordable</p>  
+      <div>  
+       <a href="browseservices.html">
+        <button class="btn"style="background:#007bff;">Browse Services </button>  </a>
+      </div>  
+
+    </div>  
+  </header>   
+  
+
+
+  <section class="why-choose-us" data-aos="fade-up">
+    <h2>Why Choose Us</h2>
+    <div class="features">
+      <div class="feature" data-aos="fade-right">
+        <h3>Verified Experts</h3>
+        <p>All professionals are background checked and skilled.</p>
+      </div>
+      <div class="feature" data-aos="fade-up">
+        <h3>Timely Services</h3>
+        <p>Book services at your convenience and preferred time.</p>
+      </div>
+      <div class="feature" data-aos="fade-left">
+        <h3>Affordable Prices</h3>
+        <p>Transparent and reasonable pricing for all services.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" data-aos="fade-up">
+    <h2>Popular Services</h2>
+    <div class="services-container">
+      <div class="service-card" data-aos="zoom-in">
+        <img src="https://img.icons8.com/ios-filled/64/007bff/electricity.png" />
+        <h4>Electrician</h4>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="https://img.icons8.com/ios-filled/64/007bff/plumbing.png" />
+        <h4>Plumber</h4>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+        <img src="https://img.icons8.com/ios-filled/64/007bff/car.png" />
+        <h4>Mechanic</h4>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+     <img src="https://cdn-icons-png.flaticon.com/512/2656/2656146.png" alt="Tiler Icon" width="64" height="64">
+
+        <h4>Tiler</h4>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
+        <img src="https://img.icons8.com/ios-filled/64/007bff/hammer.png" />
+        <h4>Carpenter</h4>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="500">
+        <img src="https://img.icons8.com/ios-filled/64/007bff/paint-brush.png" />
+        <h4>Painter</h4>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works" data-aos="fade-up">
+    <div class="text">
+
+      <h2>How It Works</h2>
+      <p>1. Select the service you need</p>
+      <p>2. Choose a verified expert</p>
+      <p>3. Book a convenient time</p>
+      <p>4. Get the job done professionally</p>
+    </div>
+    <div class="video-placeholder">
+      Video Here
+    </div>
+  </section>
+
+  <section class="testimonials" data-aos="fade-up">
+    <h2>What Our Customers Say</h2>
+    <div class="cards-container">
+      <div class="feedback-card" data-aos="fade-up">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" />
+        <p>"Great service! My electrician was professional and on time."</p>
+        <strong>- Ayesha</strong>
+      </div>
+      <div class="feedback-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://randomuser.me/api/portraits/men/46.jpg" />
+        <p>"Easy booking and very skilled carpenter. Highly recommend!"</p>
+        <strong>- Bilal</strong>
+      </div>
+      <div class="feedback-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" />
+        <p>"FixMate saved me a lot of hassle. Great tiling work done!"</p>
+        <strong>- Fatima</strong>
+      </div>
+      <div class="feedback-card" data-aos="fade-up" data-aos-delay="300">
+        <img src="https://randomuser.me/api/portraits/men/33.jpg" />
+        <p>"Mechanic was honest and quick. Loved the website!"</p>
+        <strong>- Usman</strong>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>FixMate</h4>
+        <p>Your trusted partner for all home services</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook--v1.png"/></a>
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"/></a>
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/twitter--v1.png"/></a>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top: 1rem;">&copy; 2025 FixMate. All rights reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
